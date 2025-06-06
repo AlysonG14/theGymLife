@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Lover</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='styles.css') }}">
+</head>
+
+    <body>
+        <div class="btn-document">
+                    <div id="btn_title">
+                        <img src="{{url_for('static', path='images/iconBook.png')}}" alt="Image of Icon Book" width="50px" height="50px">
+                            <h1>{{ title }}</h1>
+                    </div>
+                    <div id="btn_subtitle">
+                        <p>{{ sub_title }}</p>
+                    </div>
+                    <div id="card_button">
+                        <form action="/page/booklover.com">
+                            <input style="
+                                color: rgb(152, 229, 255);
+                                cursor: pointer;
+                                background-color: rgb(104, 104, 104);
+                                font-size: 25px;
+                                padding: 4% 7%;
+                                text-align: center;
+                                border: 1px solid black;"
+                                type="submit" value="Start">
+                        </form>
+                        <form action="/goodbye">
+                            <input style="
+                                color: rgb(152, 229, 255);
+                                cursor: pointer;
+                                background-color: rgb(104, 104, 104);
+                                font-size: 25px;
+                                padding: 4% 6.5%;
+                                text-align: center;
+                                border: 1px solid black;"
+                                type="submit" value="Leave">{{ Button02 }}
+                        </form>
+                    </div>
+                </div>
+
+</body>
+
+</html>

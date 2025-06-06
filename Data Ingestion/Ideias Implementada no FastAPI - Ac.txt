@@ -1,0 +1,6 @@
+Ideias Implementada no FastAPI - Academia GymForce
+
+Um sistema de ficha de treino, onde o usuário ele vai fazer o cadastro de uma Rede de Academia para ser armazenado dentro do Banco de Dados pelo software, e lá ele vai ter o acesso de personalização dos seus treinos, sua ficha atual, o dia que ele vai treinar, gerar a ficha em PDF, alterações da ficha após concluír 1 mês de treino, atualização da ficha após o usuário completar o desafio de 31 dias. Ele tem a opção de cadastrar um novo aparelho pelo software, caso se surgir uma na própria academia.
+
+
+GymForce

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book Lover</title>
+  <link rel="stylesheet" href="{{ url_for('static', path='styles2.css') }}">
+
+</head>
+  <body>
+    <nav>
+      <div id="btn_nav">
+        <img src="/static/images/iconBook.png" alt="Book Icon" width="50px" height="50px">
+        <h1>{{ title }}</h1>
+          <i class="bi bi-person-circle"></i>
+            <p>{{ username01 }}</p>
+            <p>{{ username02 }}</p>
+      </div>
+
+        <div id="card_nav">
+          <p>{{ nav01 }}</p>
+          <p>{{ nav02 }}</p>
+          <p>{{ nav03 }}</p>
+        </div>
+    </nav>
+    
+      <div class="card_page">
+        <div class="card_description">
+          <div class="search">
+          <form method="get">
+            <input type="text" name="titulo" placeholder="Busca por nome...">
+            <input type="number" name="id" placeholder="Busca por ID...">
+              <button type="submit">Enviar</button>
+              <ol>
+                {% for livro in livros %}
+                <li>
+                  <div class="btn_book">
+                    <img src="{{url_for('static', path='images/' + livro.get('image', 'default.png')) }}" alt="Imagem do Livro">
+                    </div>
+                      <p><strong>Titulo:</strong> {{ livro.titulo }}</p>
+                      <p><strong>Autor:</strong> {{ livro.autor }}</p>
+                      <p><strong>Ano de Publicação:</strong> {{ livro.ano_publicacao }}</p>
+                      <p><strong>Número de Páginas:</strong> {{ livro.paginas }}</p>
+                      <p><strong>Preço:</strong> R${{ livro.valor }}</p>
+                      <p><strong>Gênero</strong> {{ livro.genero }}</p>
+                      <a href="/page/booklover.com/{{ livro.id }}">
+                        <button type="button">Ver Descrição</button>
+                      </a>
+                  </div>
+                </li>
+              {% endfor %}
+              </ol>
+            </form>
+          </div>
+        </div>
+  
+  </body> 
+</html>
