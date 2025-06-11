@@ -1,6 +1,6 @@
 from core.configs import settings
 from core.database import engine
-from models import __all__models
+from .models import all_models
 
 async def create_tables() -> None:
     print("Criando as tabelas no Banco de Dados")

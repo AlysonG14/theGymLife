@@ -8,4 +8,4 @@ from models.academia_model import AcademiaModel
 from schemas.academia_schema import AcademiaSchema
 from core.deps import get_session
 
-router = APIRouter
+router = APIRouter()

@@ -4,7 +4,7 @@ from pydantic import BaseModel as SCBaseModel
 class AcademiaSchema(SCBaseModel):
     id: Optional[int] = None
     variacao: str
-    carga: str
+    carga: bool
     serie: int
     repeticao: int
 
