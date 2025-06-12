@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from core.configs import settings
-from api.v1.router import api_router
+from api.v1.api import api_router
 
 app = FastAPI(title='GymForce - Academia de Musculação')
 origins = ["htto://localhost", "http://localhost:8080", "http://localhost:5500"]
