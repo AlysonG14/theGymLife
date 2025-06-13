@@ -44,8 +44,44 @@ async def criar_aparelho(academia: AcademiaSchema, db: AsyncSession = Depends(ge
 
 # Rota para atualizar aparelho
 
+@router.put("academia/atualizar/{academia_id}",
+            response_model=AcademiaModel,
+            status_code=status.HTTP_202_ACCEPTED)
+async def atualizar_aparelho(academia_id: int, academia: AcademiaSchema,
+                             db: AsyncSession = Depends(get_session)):
+    async with db as session:
+        query = select(AcademiaSchema).filter(AcademiaModel.id == academia_id)
+        result = await session.execute(query)
+        academia_up = result.scalar_one_or_none()
+
+        if academia_up:
+            academia_up.aparelho = academia.aparelho
+            academia_up.variacao = academia.variacao
+            academia_up.carga = academia.carga
+            academia_up.serie = academia.serie
+            academia_up.repeticao = academia.repeticao
+
+            await session.commit()
+
+            return academia_up
+        else:
+            raise HTTPException(detail='Aparelho de Academia não Encontrado.',
+                                status_code=status.HTTP_404_NOT_FOUND)
 
 
 # Rota para deletar o aparelho
 
-@router.delete('/{academia_id}', status_code=status.HTTP_204_NO_CONTENT)
+@router.delete('/academia/delete/{academia_id}', status_code=status.HTTP_204_NO_CONTENT)
+async def deletar_aparelho(academia_id: int, db: AsyncSession = Depends(get_session)):
+    async with db as session:
+        query = select(AcademiaModel).filter(AcademiaModel.id == academia_id)
+        result = await session.execute(query)
+        academia_del = result.scalar_one_or_none()
+        if academia_del:
+            await session.delete(academia_del)
+            await session.commit()
+            return Response(status_code=status.HTTP_204_NO_CONTENT)
+        else:
+            raise HTTPException(detail='Aparelho de Academina não Encontrado.',
+                                status_code=status.HTTP_404_NOT_FOUND)
+
